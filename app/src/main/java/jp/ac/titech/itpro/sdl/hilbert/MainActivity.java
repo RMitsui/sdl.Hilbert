@@ -43,12 +43,21 @@ public class MainActivity extends AppCompatActivity {
                 display();
             }
         });
+        if(savedInstanceState != null){
+            order = savedInstanceState.getInt("SAVED_ORDER");
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         display();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putInt("SAVED_ORDER",order);
     }
 
     private void display() {
